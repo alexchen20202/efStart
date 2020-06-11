@@ -1,0 +1,104 @@
+@model IEnumerable<efStart3.Models.Student>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@{
+    var nextPage = (ViewBag.HasNextPage) ? (ViewBag.PageIndex + 1) : ViewBag.PageIndex;
+    var prevPage = (ViewBag.HasPrevPage) ? (ViewBag.PageIndex - 1) : ViewBag.PageIndex;
+    var nextDisable = (ViewBag.HasNextPage) ? "" : "disabled";
+    var prevDisable = (ViewBag.HasPrevPage) ? "" : "disabled";
+}
+
+<form asp-action="Index" method="get" class="form">
+    <div class = "form-row">
+      <div class="form-group col-md-3">
+        <h3>Student Index</h3>
+      </div>
+      <div class="form-group col-md-5">
+      </div>
+      <div class="form-group col-md-4">         
+        <input type="text" placeholder="Search" value="@ViewBag.SearchString" name="searchString"/>
+        <input type="submit" value="Search" class="btn btn-primary btn-sm" />
+      </div>     
+    </div>     
+</form>
+<p>Page @ViewBag.PageIndex of @ViewBag.TotalPages</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <p>
+                    <a asp-action="Index" asp-route-sortString="@ViewBag.SortFirstName">
+                      @Html.DisplayNameFor(model => model.FirstName)
+                    </a>
+                </p>
+                
+            </th>
+            <th>
+                <p>
+                    <a asp-action="Index" asp-route-sortString="@ViewBag.SortLastName">
+                        @Html.DisplayNameFor(model => model.LastName)
+                    </a>
+                </p>
+                
+                
+            </th>
+            <th>
+                <p>
+                    <a asp-action="Index" asp-route-sortString="@ViewBag.SortEnrollDate">
+                        @Html.DisplayNameFor(model => model.EnrollmentDate)
+                    </a>
+                </p>
+            </th>
+            <th>
+                <p>
+                    <a asp-action="Create">+New Student </a>
+                </p>
+            </th>
+           </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EnrollmentDate)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.StudentId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.StudentId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.StudentId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<p>
+<a asp-action = "Index" 
+    asp-route-sortString = "@ViewBag.SortString"
+    asp-route-searchString = "@ViewBag.SearchString"
+    asp-route-page="@prevPage"
+    class = "btn btn-secondary btn-sm @prevDisable"
+    >
+<< Prev |    
+</a>
+
+<a asp-action = "Index" 
+    asp-route-sortString = "@ViewBag.SortString"
+    asp-route-searchString = "@ViewBag.SearchString"
+    asp-route-page="@nextPage"
+    class = "btn btn-secondary btn-sm @nextDisable"
+    >
+| Next >>    
+</a>
+
+</p>
+

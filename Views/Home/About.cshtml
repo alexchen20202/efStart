@@ -1,0 +1,33 @@
+@model IEnumerable<efStart3.Models.SchoolViewModels.EnrollmentDateGroup>
+
+@{
+    ViewData["Title"] = "About";
+}
+
+<h4> Student Statistics </h4>
+<br>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Enrollment Date
+            </th>
+            <th>
+                Student Number
+            </th>
+        </tr>  
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+            <td>
+                @item.EnrollmentDate       
+            </td>
+            <td>
+                @item.StudentCount
+            </td>
+            </tr>    
+        }
+    </tbody>
+</table>

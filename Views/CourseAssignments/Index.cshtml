@@ -1,0 +1,42 @@
+@model IEnumerable<efStart3.Models.CourseAssignment>
+
+@{
+    ViewData["Title"] = "Course Assigned Index";
+}
+
+<h3>Course Assigned Index</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.Instructor)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.Course)
+            </td>
+            <th>
+                <p>
+                    <a asp-action="Create">Create New</a>
+                </p>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Instructor.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Course.Title)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new {InstructorID = item.InstructorID, CourseID = item.CourseID}) |
+                @Html.ActionLink("Details", "Details", new {InstructorID = item.InstructorID, CourseID = item.CourseID}) |
+                @Html.ActionLink("Delete", "Delete", new {InstructorID = item.InstructorID, CourseID = item.CourseID})
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
