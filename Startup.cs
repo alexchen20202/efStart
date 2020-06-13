@@ -10,6 +10,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using efStart3.DAL;
+using efStart3.Models;
+using efStart3.Services;
 
 namespace efStart3
 {
@@ -31,6 +33,12 @@ namespace efStart3
                 options.UseSqlite(
                     Configuration.GetConnectionString("SchoolContext"));
             });
+
+            services.AddTransient<IStudentPagedService, StudentPagedService>();
+                        
+            // List<Student> list = new List<Student>();
+            // PagedList<Student> pagedList = new PagedList<Student>();
+            // services.AddScoped(list.GetType(), pagedList.GetType());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

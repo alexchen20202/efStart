@@ -12,14 +12,15 @@ namespace efStart3.Services
         public bool HasNextPage{get; private set;}
         public bool HasPrevPage{get; private set;}
         public int PageIndex{get; private set;}
+        public List<T> Data{get;set;}
 
         public PagedList()
         {           
         }
 
-        public async Task<IQueryable<T>> Paging(IQueryable<T> collection, int pageIndex, int pageSize)
+        public void PagingAsync(IQueryable<T> collection, int pageIndex, int pageSize)
         {
-            int count = await collection.CountAsync();
+            int count = collection.Count();
             TotalPages = (int)Math.Ceiling(count/(double)pageSize);
 
             if (pageIndex <= 0) { pageIndex = 1;}
@@ -28,9 +29,7 @@ namespace efStart3.Services
             PageIndex = pageIndex;            
             HasNextPage =  (pageIndex < TotalPages) ? true : false;
             HasPrevPage =  (pageIndex > 1) ? true : false;
-            
-            collection =  collection.Skip(( pageIndex - 1 ) * pageSize).Take(pageSize);
-            return collection;            
+            Data = collection.Skip(( pageIndex - 1 ) * pageSize).Take(pageSize).ToList();
         }
 
     }

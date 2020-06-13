@@ -1,9 +1,7 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using efStart3.DAL;
 using efStart3.Models;
@@ -14,14 +12,16 @@ namespace efStart3.Controllers
     public class StudentsController : Controller
     {
         private readonly SchoolContext _context;
+        private IStudentPagedService _pagedService;
 
-        public StudentsController(SchoolContext context)
+        public StudentsController(SchoolContext context, IStudentPagedService pagedService)
         {
             _context = context;
+            _pagedService = pagedService;
         }
 
         // GET: Students
-        public async Task<IActionResult> Index(string sortString = "", string searchString = "", int page = 1)
+        public IActionResult Index(string sortString = "", string searchString = "", int page = 1)
         {
             ViewBag.SearchString = searchString;
             ViewBag.SortString = sortString;
@@ -65,16 +65,17 @@ namespace efStart3.Controllers
                 break;
             }
             
-            int pageSize = 5;
+            int pageSize = 10;
             PagedList<Student> pageList = new PagedList<Student>();
-            students = await pageList.Paging(students, page, pageSize);
-
-            ViewBag.HasNextPage = pageList.HasNextPage;
-            ViewBag.HasPrevPage = pageList.HasPrevPage;
-            ViewBag.TotalPages = pageList.TotalPages;
-            ViewBag.PageIndex = pageList.PageIndex;
+            pageList.PagingAsync(students, page, pageSize);
+            // students = await _pagedService.PagedList().Paging(students, page, pageSize);
+            // ViewBag.HasNextPage = _pagedService.PagedList().HasNextPage;
+            // ViewBag.HasPrevPage = _pagedService.PagedList().HasPrevPage;
+            // ViewBag.TotalPages = _pagedService.PagedList().TotalPages;
+            // ViewBag.PageIndex = _pagedService.PagedList().PageIndex;
             
-            return View(students);
+            return View(pageList);
+            
         }
 
         // GET: Students/Details/5

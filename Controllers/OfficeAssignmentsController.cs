@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using efStart3.DAL;
 using efStart3.Models;
+using efStart3.Services;
+using Microsoft.EntityFrameworkCore.Query;
 
 namespace efStart3.Controllers
 {
@@ -20,9 +22,10 @@ namespace efStart3.Controllers
         }
 
         // GET: OfficeAssignments
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int page = 1)
         {
             var schoolContext = _context.OfficeAssignments.Include(o => o.Instructor);
+            
             return View(await schoolContext.ToListAsync());
         }
 

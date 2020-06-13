@@ -1,14 +1,14 @@
-@model IEnumerable<efStart3.Models.Student>
+@model efStart3.Services.PagedList<Student>
 
 @{
     ViewData["Title"] = "Index";
 }
 
 @{
-    var nextPage = (ViewBag.HasNextPage) ? (ViewBag.PageIndex + 1) : ViewBag.PageIndex;
-    var prevPage = (ViewBag.HasPrevPage) ? (ViewBag.PageIndex - 1) : ViewBag.PageIndex;
-    var nextDisable = (ViewBag.HasNextPage) ? "" : "disabled";
-    var prevDisable = (ViewBag.HasPrevPage) ? "" : "disabled";
+    var nextPage = (Model.HasNextPage) ? (Model.PageIndex + 1) : Model.PageIndex;
+    var prevPage = (Model.HasPrevPage) ? (Model.PageIndex - 1) : Model.PageIndex;
+    var nextDisable = (Model.HasNextPage) ? "" : "disabled";
+    var prevDisable = (Model.HasPrevPage) ? "" : "disabled";
 }
 
 <form asp-action="Index" method="get" class="form">
@@ -24,52 +24,44 @@
       </div>     
     </div>     
 </form>
-<p>Page @ViewBag.PageIndex of @ViewBag.TotalPages</p>
+<p>Page @Model.PageIndex of @Model.TotalPages</p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                <p>
-                    <a asp-action="Index" asp-route-sortString="@ViewBag.SortFirstName">
-                      @Html.DisplayNameFor(model => model.FirstName)
-                    </a>
-                </p>
-                
+                <a asp-action="Index" asp-route-sortString="@ViewBag.SortFirstName">
+                    @Html.DisplayNameFor(model => model.Data.FirstOrDefault().FirstName)  
+                </a>
             </th>
             <th>
-                <p>
-                    <a asp-action="Index" asp-route-sortString="@ViewBag.SortLastName">
-                        @Html.DisplayNameFor(model => model.LastName)
-                    </a>
-                </p>
-                
-                
+                <a asp-action="Index" asp-route-sortString="@ViewBag.SortLastName">
+                    @Html.DisplayNameFor(model => model.Data.FirstOrDefault().LastName)                    
+                </a>
             </th>
             <th>
-                <p>
-                    <a asp-action="Index" asp-route-sortString="@ViewBag.SortEnrollDate">
-                        @Html.DisplayNameFor(model => model.EnrollmentDate)
-                    </a>
-                </p>
+                <a asp-action="Index" asp-route-sortString="@ViewBag.SortEnrollDate">
+                    @Html.DisplayNameFor(model => model.Data.FirstOrDefault().EnrollmentDate)
+                </a>
             </th>
             <th>
-                <p>
-                    <a asp-action="Create">+New Student </a>
-                </p>
+                <a asp-action="Create">New Student </a>
             </th>
            </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+@foreach (Student item in Model.Data) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
+                @* @Html.DisplayFor(modleItem => item.Data.FirstOrDefault().FirstName) *@
+                @item.FirstName
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.LastName)
+                @* @Html.DisplayFor(item => item.Data.FirstOrDefault().LastName) *@
+                @item.LastName
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.EnrollmentDate)
+                @* @Html.DisplayFor(item => item.Data.FirstOrDefault().EnrollmentDate) *@
+                @item.EnrollmentDate
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.StudentId">Edit</a> |
@@ -86,16 +78,16 @@
     asp-route-sortString = "@ViewBag.SortString"
     asp-route-searchString = "@ViewBag.SearchString"
     asp-route-page="@prevPage"
-    class = "btn btn-secondary btn-sm @prevDisable"
+    class = "btn btn-success btn-sm @prevDisable"
     >
 << Prev |    
 </a>
 
-<a asp-action = "Index" 
+<a  asp-action = "Index" 
     asp-route-sortString = "@ViewBag.SortString"
     asp-route-searchString = "@ViewBag.SearchString"
     asp-route-page="@nextPage"
-    class = "btn btn-secondary btn-sm @nextDisable"
+    class = "btn btn-success btn-sm @nextDisable"
     >
 | Next >>    
 </a>
