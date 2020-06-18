@@ -1,5 +1,5 @@
 {
-  "FilePath": "c:\\Users\\user\\Documents\\dotNetCore\\efStart3\\efStart3.csproj",
+  "FilePath": "c:\\Users\\user\\documents\\dotnetcore\\0617\\efStart\\efStart3.csproj",
   "Configuration": {
     "ConfigurationName": "MVC-3.0",
     "LanguageVersion": "3.0",
@@ -20521,243 +20521,243 @@
   "RootNamespace": "efStart3",
   "Documents": [
     {
-      "FilePath": "c:\\Users\\user\\Documents\\dotNetCore\\efStart3\\Views\\Instructors\\Delete.cshtml",
-      "TargetPath": "Views\\Instructors\\Delete.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\user\\Documents\\dotNetCore\\efStart3\\Views\\Departments\\Details.cshtml",
-      "TargetPath": "Views\\Departments\\Details.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\user\\Documents\\dotNetCore\\efStart3\\Views\\Instructors\\Edit.cshtml",
-      "TargetPath": "Views\\Instructors\\Edit.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\user\\Documents\\dotNetCore\\efStart3\\Views\\Students\\Edit.cshtml",
-      "TargetPath": "Views\\Students\\Edit.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\user\\Documents\\dotNetCore\\efStart3\\Views\\Departments\\Index.cshtml",
-      "TargetPath": "Views\\Departments\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\user\\Documents\\dotNetCore\\efStart3\\Views\\Shared\\_Layout.cshtml",
-      "TargetPath": "Views\\Shared\\_Layout.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\user\\Documents\\dotNetCore\\efStart3\\Views\\CourseAssignments\\Delete.cshtml",
-      "TargetPath": "Views\\CourseAssignments\\Delete.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\user\\Documents\\dotNetCore\\efStart3\\Views\\CourseAssignments\\Index.cshtml",
-      "TargetPath": "Views\\CourseAssignments\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\user\\Documents\\dotNetCore\\efStart3\\Views\\Students\\Details.cshtml",
-      "TargetPath": "Views\\Students\\Details.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\user\\Documents\\dotNetCore\\efStart3\\Views\\Enrollments\\Create.cshtml",
-      "TargetPath": "Views\\Enrollments\\Create.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\user\\Documents\\dotNetCore\\efStart3\\Views\\Enrollments\\Delete.cshtml",
-      "TargetPath": "Views\\Enrollments\\Delete.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\user\\Documents\\dotNetCore\\efStart3\\Views\\OfficeAssignments\\Delete.cshtml",
-      "TargetPath": "Views\\OfficeAssignments\\Delete.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\user\\Documents\\dotNetCore\\efStart3\\Views\\Enrollments\\Edit.cshtml",
-      "TargetPath": "Views\\Enrollments\\Edit.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\user\\Documents\\dotNetCore\\efStart3\\Views\\Home\\Privacy.cshtml",
-      "TargetPath": "Views\\Home\\Privacy.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\user\\Documents\\dotNetCore\\efStart3\\Views\\Instructors\\Index.cshtml",
-      "TargetPath": "Views\\Instructors\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\user\\Documents\\dotNetCore\\efStart3\\Views\\OfficeAssignments\\Index.cshtml",
+      "FilePath": "c:\\Users\\user\\documents\\dotnetcore\\0617\\efStart\\Views\\OfficeAssignments\\Index.cshtml",
       "TargetPath": "Views\\OfficeAssignments\\Index.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\user\\Documents\\dotNetCore\\efStart3\\Views\\OfficeAssignments\\Details.cshtml",
-      "TargetPath": "Views\\OfficeAssignments\\Details.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\user\\Documents\\dotNetCore\\efStart3\\Views\\Enrollments\\Index.cshtml",
-      "TargetPath": "Views\\Enrollments\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\user\\Documents\\dotNetCore\\efStart3\\Views\\CourseAssignments\\Create.cshtml",
-      "TargetPath": "Views\\CourseAssignments\\Create.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\user\\Documents\\dotNetCore\\efStart3\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
-      "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\user\\Documents\\dotNetCore\\efStart3\\Views\\Students\\Index.cshtml",
-      "TargetPath": "Views\\Students\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\user\\Documents\\dotNetCore\\efStart3\\Views\\CourseAssignments\\Details.cshtml",
-      "TargetPath": "Views\\CourseAssignments\\Details.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\user\\Documents\\dotNetCore\\efStart3\\Views\\Courses\\Details.cshtml",
-      "TargetPath": "Views\\Courses\\Details.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\user\\Documents\\dotNetCore\\efStart3\\Views\\Home\\About.cshtml",
+      "FilePath": "c:\\Users\\user\\documents\\dotnetcore\\0617\\efStart\\Views\\Home\\About.cshtml",
       "TargetPath": "Views\\Home\\About.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\user\\Documents\\dotNetCore\\efStart3\\Views\\DepartmentsRawVersion\\Create.cshtml",
-      "TargetPath": "Views\\DepartmentsRawVersion\\Create.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\user\\Documents\\dotNetCore\\efStart3\\Views\\Instructors\\Create.cshtml",
-      "TargetPath": "Views\\Instructors\\Create.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\user\\Documents\\dotNetCore\\efStart3\\Views\\DepartmentsRawVersion\\Details.cshtml",
-      "TargetPath": "Views\\DepartmentsRawVersion\\Details.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\user\\Documents\\dotNetCore\\efStart3\\Views\\Instructors\\Details.cshtml",
-      "TargetPath": "Views\\Instructors\\Details.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\user\\Documents\\dotNetCore\\efStart3\\Views\\DepartmentsRawVersion\\Delete.cshtml",
-      "TargetPath": "Views\\DepartmentsRawVersion\\Delete.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\user\\Documents\\dotNetCore\\efStart3\\Views\\Courses\\Delete.cshtml",
-      "TargetPath": "Views\\Courses\\Delete.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\user\\Documents\\dotNetCore\\efStart3\\Views\\OfficeAssignments\\Create.cshtml",
-      "TargetPath": "Views\\OfficeAssignments\\Create.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\user\\Documents\\dotNetCore\\efStart3\\Views\\Departments\\Edit.cshtml",
-      "TargetPath": "Views\\Departments\\Edit.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\user\\Documents\\dotNetCore\\efStart3\\Views\\Students\\Create.cshtml",
-      "TargetPath": "Views\\Students\\Create.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\user\\Documents\\dotNetCore\\efStart3\\Views\\_ViewStart.cshtml",
-      "TargetPath": "Views\\_ViewStart.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\user\\Documents\\dotNetCore\\efStart3\\Views\\Students\\Delete.cshtml",
-      "TargetPath": "Views\\Students\\Delete.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\user\\Documents\\dotNetCore\\efStart3\\Views\\DepartmentsRawVersion\\Edit.cshtml",
-      "TargetPath": "Views\\DepartmentsRawVersion\\Edit.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\user\\Documents\\dotNetCore\\efStart3\\Views\\Departments\\Create.cshtml",
+      "FilePath": "c:\\Users\\user\\documents\\dotnetcore\\0617\\efStart\\Views\\Departments\\Create.cshtml",
       "TargetPath": "Views\\Departments\\Create.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\user\\Documents\\dotNetCore\\efStart3\\Views\\Courses\\Index.cshtml",
-      "TargetPath": "Views\\Courses\\Index.cshtml",
+      "FilePath": "c:\\Users\\user\\documents\\dotnetcore\\0617\\efStart\\Views\\Instructors\\Create.cshtml",
+      "TargetPath": "Views\\Instructors\\Create.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\user\\Documents\\dotNetCore\\efStart3\\Views\\Shared\\Error.cshtml",
-      "TargetPath": "Views\\Shared\\Error.cshtml",
+      "FilePath": "c:\\Users\\user\\documents\\dotnetcore\\0617\\efStart\\Views\\OfficeAssignments\\Details.cshtml",
+      "TargetPath": "Views\\OfficeAssignments\\Details.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\user\\Documents\\dotNetCore\\efStart3\\Views\\Enrollments\\Details.cshtml",
-      "TargetPath": "Views\\Enrollments\\Details.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\user\\Documents\\dotNetCore\\efStart3\\Views\\Departments\\Delete.cshtml",
+      "FilePath": "c:\\Users\\user\\documents\\dotnetcore\\0617\\efStart\\Views\\Departments\\Delete.cshtml",
       "TargetPath": "Views\\Departments\\Delete.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\user\\Documents\\dotNetCore\\efStart3\\Views\\Home\\Index.cshtml",
-      "TargetPath": "Views\\Home\\Index.cshtml",
+      "FilePath": "c:\\Users\\user\\documents\\dotnetcore\\0617\\efStart\\Views\\Instructors\\Index.cshtml",
+      "TargetPath": "Views\\Instructors\\Index.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\user\\Documents\\dotNetCore\\efStart3\\Views\\CourseAssignments\\Edit.cshtml",
-      "TargetPath": "Views\\CourseAssignments\\Edit.cshtml",
+      "FilePath": "c:\\Users\\user\\documents\\dotnetcore\\0617\\efStart\\Views\\DepartmentsRawVersion\\Edit.cshtml",
+      "TargetPath": "Views\\DepartmentsRawVersion\\Edit.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\user\\Documents\\dotNetCore\\efStart3\\Views\\DepartmentsRawVersion\\Index.cshtml",
+      "FilePath": "c:\\Users\\user\\documents\\dotnetcore\\0617\\efStart\\Views\\DepartmentsRawVersion\\Index.cshtml",
       "TargetPath": "Views\\DepartmentsRawVersion\\Index.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\user\\Documents\\dotNetCore\\efStart3\\Views\\OfficeAssignments\\Edit.cshtml",
-      "TargetPath": "Views\\OfficeAssignments\\Edit.cshtml",
+      "FilePath": "c:\\Users\\user\\documents\\dotnetcore\\0617\\efStart\\Views\\CourseAssignments\\Create.cshtml",
+      "TargetPath": "Views\\CourseAssignments\\Create.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\user\\Documents\\dotNetCore\\efStart3\\Views\\Courses\\Create.cshtml",
+      "FilePath": "c:\\Users\\user\\documents\\dotnetcore\\0617\\efStart\\Views\\Shared\\Error.cshtml",
+      "TargetPath": "Views\\Shared\\Error.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\user\\documents\\dotnetcore\\0617\\efStart\\Views\\Home\\Index.cshtml",
+      "TargetPath": "Views\\Home\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\user\\documents\\dotnetcore\\0617\\efStart\\Views\\CourseAssignments\\Details.cshtml",
+      "TargetPath": "Views\\CourseAssignments\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\user\\documents\\dotnetcore\\0617\\efStart\\Views\\DepartmentsRawVersion\\Create.cshtml",
+      "TargetPath": "Views\\DepartmentsRawVersion\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\user\\documents\\dotnetcore\\0617\\efStart\\Views\\CourseAssignments\\Index.cshtml",
+      "TargetPath": "Views\\CourseAssignments\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\user\\documents\\dotnetcore\\0617\\efStart\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\user\\documents\\dotnetcore\\0617\\efStart\\Views\\Courses\\Index.cshtml",
+      "TargetPath": "Views\\Courses\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\user\\documents\\dotnetcore\\0617\\efStart\\Views\\Enrollments\\Index.cshtml",
+      "TargetPath": "Views\\Enrollments\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\user\\documents\\dotnetcore\\0617\\efStart\\Views\\Courses\\Create.cshtml",
       "TargetPath": "Views\\Courses\\Create.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\user\\Documents\\dotNetCore\\efStart3\\Views\\Courses\\Edit.cshtml",
+      "FilePath": "c:\\Users\\user\\documents\\dotnetcore\\0617\\efStart\\Views\\Students\\Delete.cshtml",
+      "TargetPath": "Views\\Students\\Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\user\\documents\\dotnetcore\\0617\\efStart\\Views\\Enrollments\\Create.cshtml",
+      "TargetPath": "Views\\Enrollments\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\user\\documents\\dotnetcore\\0617\\efStart\\Views\\Departments\\Details.cshtml",
+      "TargetPath": "Views\\Departments\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\user\\documents\\dotnetcore\\0617\\efStart\\Views\\DepartmentsRawVersion\\Details.cshtml",
+      "TargetPath": "Views\\DepartmentsRawVersion\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\user\\documents\\dotnetcore\\0617\\efStart\\Views\\Departments\\Index.cshtml",
+      "TargetPath": "Views\\Departments\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\user\\documents\\dotnetcore\\0617\\efStart\\Views\\OfficeAssignments\\Create.cshtml",
+      "TargetPath": "Views\\OfficeAssignments\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\user\\documents\\dotnetcore\\0617\\efStart\\Views\\Enrollments\\Details.cshtml",
+      "TargetPath": "Views\\Enrollments\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\user\\documents\\dotnetcore\\0617\\efStart\\Views\\Departments\\Edit.cshtml",
+      "TargetPath": "Views\\Departments\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\user\\documents\\dotnetcore\\0617\\efStart\\Views\\Courses\\Edit.cshtml",
       "TargetPath": "Views\\Courses\\Edit.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\user\\Documents\\dotNetCore\\efStart3\\Views\\_ViewImports.cshtml",
+      "FilePath": "c:\\Users\\user\\documents\\dotnetcore\\0617\\efStart\\Views\\CourseAssignments\\Edit.cshtml",
+      "TargetPath": "Views\\CourseAssignments\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\user\\documents\\dotnetcore\\0617\\efStart\\Views\\Students\\Details.cshtml",
+      "TargetPath": "Views\\Students\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\user\\documents\\dotnetcore\\0617\\efStart\\Views\\_ViewStart.cshtml",
+      "TargetPath": "Views\\_ViewStart.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\user\\documents\\dotnetcore\\0617\\efStart\\Views\\Instructors\\Details.cshtml",
+      "TargetPath": "Views\\Instructors\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\user\\documents\\dotnetcore\\0617\\efStart\\Views\\OfficeAssignments\\Edit.cshtml",
+      "TargetPath": "Views\\OfficeAssignments\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\user\\documents\\dotnetcore\\0617\\efStart\\Views\\Students\\Index.cshtml",
+      "TargetPath": "Views\\Students\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\user\\documents\\dotnetcore\\0617\\efStart\\Views\\DepartmentsRawVersion\\Delete.cshtml",
+      "TargetPath": "Views\\DepartmentsRawVersion\\Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\user\\documents\\dotnetcore\\0617\\efStart\\Views\\Courses\\Delete.cshtml",
+      "TargetPath": "Views\\Courses\\Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\user\\documents\\dotnetcore\\0617\\efStart\\Views\\Instructors\\Delete.cshtml",
+      "TargetPath": "Views\\Instructors\\Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\user\\documents\\dotnetcore\\0617\\efStart\\Views\\CourseAssignments\\Delete.cshtml",
+      "TargetPath": "Views\\CourseAssignments\\Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\user\\documents\\dotnetcore\\0617\\efStart\\Views\\Instructors\\Edit.cshtml",
+      "TargetPath": "Views\\Instructors\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\user\\documents\\dotnetcore\\0617\\efStart\\Views\\Home\\Privacy.cshtml",
+      "TargetPath": "Views\\Home\\Privacy.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\user\\documents\\dotnetcore\\0617\\efStart\\Views\\_ViewImports.cshtml",
       "TargetPath": "Views\\_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\user\\documents\\dotnetcore\\0617\\efStart\\Views\\OfficeAssignments\\Delete.cshtml",
+      "TargetPath": "Views\\OfficeAssignments\\Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\user\\documents\\dotnetcore\\0617\\efStart\\Views\\Students\\Create.cshtml",
+      "TargetPath": "Views\\Students\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\user\\documents\\dotnetcore\\0617\\efStart\\Views\\Shared\\_Layout.cshtml",
+      "TargetPath": "Views\\Shared\\_Layout.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\user\\documents\\dotnetcore\\0617\\efStart\\Views\\Students\\Edit.cshtml",
+      "TargetPath": "Views\\Students\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\user\\documents\\dotnetcore\\0617\\efStart\\Views\\Enrollments\\Edit.cshtml",
+      "TargetPath": "Views\\Enrollments\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\user\\documents\\dotnetcore\\0617\\efStart\\Views\\Courses\\Details.cshtml",
+      "TargetPath": "Views\\Courses\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\user\\documents\\dotnetcore\\0617\\efStart\\Views\\Enrollments\\Delete.cshtml",
+      "TargetPath": "Views\\Enrollments\\Delete.cshtml",
       "FileKind": "mvc"
     }
   ],

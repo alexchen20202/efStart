@@ -12,7 +12,7 @@ namespace efStart3.Models
         public int CourseID{get;set;}        
         [Required]
         public int StudentID{get;set;}
-        [Display(Name="No Grade")]
+        [Display(Name="Grade")]
         public Grade? Grade{get;set;}
 
 

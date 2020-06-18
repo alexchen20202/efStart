@@ -8597,11 +8597,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\user\\Documents\\dotNetCore\\efStart3\\efStart3.csproj",
+      "projectUniqueName": "C:\\Users\\user\\documents\\dotnetcore\\0617\\efStart\\efStart3.csproj",
       "projectName": "efStart3",
-      "projectPath": "C:\\Users\\user\\Documents\\dotNetCore\\efStart3\\efStart3.csproj",
+      "projectPath": "C:\\Users\\user\\documents\\dotnetcore\\0617\\efStart\\efStart3.csproj",
       "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\user\\Documents\\dotNetCore\\efStart3\\obj\\",
+      "outputPath": "C:\\Users\\user\\documents\\dotnetcore\\0617\\efStart\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
