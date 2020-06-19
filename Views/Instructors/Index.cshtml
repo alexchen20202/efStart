@@ -1,4 +1,3 @@
-@* @model IEnumerable<efStart3.Models.Instructor> *@
 @model efStart3.Models.SchoolViewModels.InstructorIndexData    
 
 @{
@@ -96,7 +95,7 @@
                 }
             </td>
             <td>
-                <a asp-action="Index"  onclick="selectInstructor()" asp-route-InstructorID="@item.InstructorID">Select</a> |
+                <a asp-action="Index" asp-route-InstructorID="@item.InstructorID">Select</a> |
                 <a asp-action="Edit" asp-route-id="@item.InstructorID">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.InstructorID">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.InstructorID">Delete</a>

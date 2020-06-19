@@ -53,37 +53,6 @@ namespace efStart3.Controllers
                 .Where(c => c.CourseID == CourseID).Single();
                 viewModel.Enrollments = course.Enrollments;
             }
-
-            // var viewModel = new InstructorIndexData();
-            // viewModel.Instructors = await _context.Instructors
-            // .Include(i => i.OfficeAssignment)
-            // .Include(i => i.CourseAssignments)
-            // .ThenInclude(i => i.Course)
-            // .ThenInclude(i => i.Enrollments)
-            // .ThenInclude(i => i.Student)
-            // .Include(i => i.CourseAssignments)
-            // .ThenInclude(i => i.Course)
-            // .ThenInclude(i => i.Department)
-            // .AsNoTracking()
-            // .OrderBy(i => i.FullName)
-            // .ToListAsync();
-       
-            // if (InstructorID != null)
-            // {
-            //     ViewData["InstructorID"] = InstructorID.Value;
-            //     Instructor instructor = viewModel.Instructors.Where(
-            //         i => i.InstructorID == InstructorID.Value).Single();
-            //     viewModel.Courses = instructor.CourseAssignments.Select(c => c.Course);
-            // }
-
-            // if (CourseID != null)
-            // {
-            //     ViewData["CourseID"] = CourseID.Value;
-            //     Course course = viewModel.Courses
-            //     .Where(c => c.CourseID == CourseID).Single();
-            //     viewModel.Enrollments = course.Enrollments;                
-            // }
-
             return View(viewModel);
         }
 
