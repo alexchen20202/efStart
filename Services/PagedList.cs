@@ -18,7 +18,7 @@ namespace efStart3.Services
         {           
         }
 
-        public void PagingAsync(IQueryable<T> collection, int pageIndex, int pageSize)
+        public async void PagingAsync(IQueryable<T> collection, int pageIndex, int pageSize)
         {
             int count = collection.Count();
             TotalPages = (int)Math.Ceiling(count/(double)pageSize);
@@ -29,7 +29,7 @@ namespace efStart3.Services
             PageIndex = pageIndex;            
             HasNextPage =  (pageIndex < TotalPages) ? true : false;
             HasPrevPage =  (pageIndex > 1) ? true : false;
-            Data = collection.Skip(( pageIndex - 1 ) * pageSize).Take(pageSize).ToList();
+            Data = await collection.Skip(( pageIndex - 1 ) * pageSize).Take(pageSize).ToListAsync();
         }
 
     }
