@@ -12,10 +12,12 @@ namespace efStart3.Controllers
     public class StudentsController : Controller
     {
         private readonly SchoolContext _context;
+        private readonly IStudentPagedService _pagedList;
         
-        public StudentsController(SchoolContext context)
+        public StudentsController(SchoolContext context, IStudentPagedService pagedList)
         {
             _context = context;
+            _pagedList = pagedList;
         }
 
         // GET: Students
@@ -64,10 +66,12 @@ namespace efStart3.Controllers
             }
             
             int pageSize = 10;
-            PagedList<Student> pageList = new PagedList<Student>();
-            pageList.PagingAsync(students, page, pageSize);
-            
-            return View(pageList);
+            // PagedList<Student> pageList = new PagedList<Student>();
+            // pageList.PagingAsync(students, page, pageSize);
+            // return View(pageList);
+            PagedList<Student> list = _pagedList.PagedList();
+            list.PagingAsync(students, page, pageSize);
+            return View(list);
             
         }
 

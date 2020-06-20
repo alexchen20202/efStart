@@ -33,6 +33,7 @@ namespace efStart3
                 options.UseSqlite(
                     Configuration.GetConnectionString("SchoolContext"));
             });
+            services.AddSingleton<IStudentPagedService, StudentPagedService>();
             
         }
 
