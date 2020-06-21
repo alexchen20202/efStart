@@ -25,8 +25,7 @@ namespace efStart3.Controllers
 
         // GET: Instructors
         public IActionResult Index(
-            int? InstructorID, int? CourseID, int pageIndex = 1, 
-            string sortString = "", string searchString = "")
+            int? InstructorID, int? CourseID, int pageIndex = 1, string searchString = "")
         {
             ViewBag.SearchString = searchString;
             var viewModel = new InstructorIndexData();

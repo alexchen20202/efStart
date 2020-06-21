@@ -31,7 +31,6 @@
     <thead>
         <tr>
             <th>
-                
                 Full Name
             </th>
             <th>
@@ -74,7 +73,7 @@
                 }
             </td>
             <td>
-                <a asp-action="Index" asp-route-InstructorID="@item.InstructorID">Select</a> |
+                <a asp-action="Index" asp-route-InstructorID="@item.InstructorID" asp-route-searchString = "@ViewBag.SearchString">Select</a> |
                 <a asp-action="Edit" asp-route-id="@item.InstructorID">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.InstructorID">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.InstructorID">Delete</a>
@@ -86,8 +85,7 @@
 <hr><br>
 
 <p>
-<a asp-action = "Index" 
-    asp-route-sortString = "@ViewBag.SortString"
+<a asp-action = "Index"
     asp-route-searchString = "@ViewBag.SearchString"
     asp-route-pageIndex="@prevPage"
     class = "btn btn-success btn-sm @prevDisable"
@@ -95,8 +93,7 @@
 << Prev |    
 </a>
 
-<a  asp-action = "Index" 
-    asp-route-sortString = "@ViewBag.SortString"
+<a  asp-action = "Index"
     asp-route-searchString = "@ViewBag.SearchString"
     asp-route-pageIndex="@nextPage"
     class = "btn btn-success btn-sm @nextDisable"
@@ -143,8 +140,12 @@
                     @item.Department.Name
                 </td>
                 <td>
-                    @Html.ActionLink("Select", "Index", 
-                    new { CourseID = item.CourseID, InstructorID = ViewData["InstructorID"]})
+                    <a  asp-action="Index" 
+                        asp-route-CourseID = "@item.CourseID"
+                        asp-route-InstructorID="@ViewData["InstructorID"]" 
+                        asp-route-searchString = "@ViewBag.SearchString">
+                        Select
+                    </a>    
                 </td>
             </tr>
         }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\user\\documents\\dotnetcore\\efStart\\efStart3.csproj": {}
+    "C:\\Users\\user\\documents\\dotnetcore\\efstart\\efStart3.csproj": {}
   },
   "projects": {
-    "C:\\Users\\user\\documents\\dotnetcore\\efStart\\efStart3.csproj": {
+    "C:\\Users\\user\\documents\\dotnetcore\\efstart\\efStart3.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\user\\documents\\dotnetcore\\efStart\\efStart3.csproj",
+        "projectUniqueName": "C:\\Users\\user\\documents\\dotnetcore\\efstart\\efStart3.csproj",
         "projectName": "efStart3",
-        "projectPath": "C:\\Users\\user\\documents\\dotnetcore\\efStart\\efStart3.csproj",
+        "projectPath": "C:\\Users\\user\\documents\\dotnetcore\\efstart\\efStart3.csproj",
         "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\user\\documents\\dotnetcore\\efStart\\obj\\",
+        "outputPath": "C:\\Users\\user\\documents\\dotnetcore\\efstart\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
