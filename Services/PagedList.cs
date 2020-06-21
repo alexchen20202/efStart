@@ -29,7 +29,8 @@ namespace efStart3.Services
             PageIndex = pageIndex;            
             HasNextPage =  (pageIndex < TotalPages) ? true : false;
             HasPrevPage =  (pageIndex > 1) ? true : false;
-            Data = await collection.Skip(( pageIndex - 1 ) * pageSize).Take(pageSize).ToListAsync();
+            Data = await collection.Skip(( pageIndex - 1 ) * pageSize)
+            .Take(pageSize).ToListAsync();
         }
 
     }
