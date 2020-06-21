@@ -66,10 +66,10 @@
             <td>
                 @if (item.CourseAssignments != null)
                 {
-                    foreach( var course in item.CourseAssignments)
+                    foreach( var courseAssignment in item.CourseAssignments)
                     {   
-                        <p> Course Code: @Html.DisplayFor(cID => course.Course.CourseID)</p>
-                        <p> Course Title: @Html.DisplayFor(cTitle => course.Course.Title)</p>
+                        <p> Course Code: @Html.DisplayFor(cID => courseAssignment.Course.CourseID)</p>
+                        <p> Course Title: @Html.DisplayFor(cTitle => courseAssignment.Course.Title)</p>
                     }
                 }
             </td>
