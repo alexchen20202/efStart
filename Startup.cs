@@ -34,6 +34,7 @@ namespace efStart3
                     Configuration.GetConnectionString("SchoolContext"));
             });
             services.AddSingleton<IStudentPagedService, StudentPagedService>();
+            services.AddSingleton<IInstructorPagedService, InstructorPagedService>();
             
         }
 

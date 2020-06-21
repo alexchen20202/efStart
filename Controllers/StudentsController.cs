@@ -21,7 +21,8 @@ namespace efStart3.Controllers
         }
 
         // GET: Students
-        public IActionResult Index(string sortString = "", string searchString = "", int page = 1)
+        public IActionResult Index(string sortString = "", 
+        string searchString = "", int pageIndex = 1)
         {
             ViewBag.SearchString = searchString;
             ViewBag.SortString = sortString;
@@ -33,7 +34,7 @@ namespace efStart3.Controllers
 
             if(!String.IsNullOrEmpty(searchString))
             {
-                page = 1;
+                pageIndex = 1;
                 students = students.Where(
                     s => s.FirstName.Contains(searchString)
                     || s.LastName.Contains(searchString)
@@ -70,7 +71,7 @@ namespace efStart3.Controllers
             // pageList.PagingAsync(students, page, pageSize);
             // return View(pageList);
             PagedList<Student> list = _pagedList.PagedList();
-            list.PagingAsync(students, page, pageSize);
+            list.PagingAsync(students, pageIndex, pageSize);
             return View(list);
             
         }

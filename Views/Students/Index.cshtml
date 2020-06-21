@@ -77,7 +77,7 @@
 <a asp-action = "Index" 
     asp-route-sortString = "@ViewBag.SortString"
     asp-route-searchString = "@ViewBag.SearchString"
-    asp-route-page="@prevPage"
+    asp-route-pageIndex="@prevPage"
     class = "btn btn-success btn-sm @prevDisable"
     >
 << Prev |    
@@ -86,7 +86,7 @@
 <a  asp-action = "Index" 
     asp-route-sortString = "@ViewBag.SortString"
     asp-route-searchString = "@ViewBag.SearchString"
-    asp-route-page="@nextPage"
+    asp-route-pageIndex="@nextPage"
     class = "btn btn-success btn-sm @nextDisable"
     >
 | Next >>    

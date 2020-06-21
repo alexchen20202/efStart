@@ -3,28 +3,34 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using efStart3.DAL;
 using efStart3.Models;
 using efStart3.Models.SchoolViewModels;
+using efStart3.Services;
 
 namespace efStart3.Controllers
 {
     public class InstructorsController : Controller
     {
         private readonly SchoolContext _context;
+        private readonly IInstructorPagedService _pagedList;
 
-        public InstructorsController(SchoolContext context)
+        public InstructorsController(SchoolContext context,
+        IInstructorPagedService pagedList)
         {
             _context = context;
+            _pagedList = pagedList;
         }
 
         // GET: Instructors
-        public async Task<IActionResult> Index(int? InstructorID, int? CourseID)
+        public IActionResult Index(
+            int? InstructorID, int? CourseID, int pageIndex = 1, string sortString = "", 
+        string searchString = "")
         {
             var viewModel = new InstructorIndexData();
-            viewModel.Instructors = await _context.Instructors
+
+            IQueryable<Instructor> instructors = _context.Instructors
             .Include(i => i.OfficeAssignment)
             .Include(i => i.CourseAssignments)
             .ThenInclude(i => i.Course)
@@ -35,12 +41,21 @@ namespace efStart3.Controllers
             .ThenInclude(i => i.Student)
             .AsNoTracking()
             .OrderBy(i => i.FirstMidName)
-            .ToListAsync();
+            .AsQueryable();
+            
+            if(!String.IsNullOrEmpty(searchString))
+            {
+                pageIndex = 1;
+                instructors = instructors.Where(
+                    i => i.FirstMidName.Contains(searchString) 
+                    || i.LastName.Contains(searchString)
+                );
+            }
 
             if(InstructorID != null)
             {
                 ViewData["InstructorID"] = InstructorID;
-                Instructor instructor = viewModel.Instructors
+                Instructor instructor = instructors
                 .Where(i => i.InstructorID == InstructorID).Single();
                 viewModel.Courses = instructor.CourseAssignments
                 .Select(c => c.Course);
@@ -53,6 +68,12 @@ namespace efStart3.Controllers
                 .Where(c => c.CourseID == CourseID).Single();
                 viewModel.Enrollments = course.Enrollments;
             }
+            
+            int pageSize = 10;
+            PagedList<Instructor> list = _pagedList.PagedList();            
+            list.PagingAsync(instructors, pageIndex, pageSize);
+            viewModel.PagedList = list;
+
             return View(viewModel);
         }
 
