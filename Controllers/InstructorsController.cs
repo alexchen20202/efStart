@@ -41,7 +41,7 @@ namespace efStart3.Controllers
             .ThenInclude(i => i.Enrollments)
             .ThenInclude(i => i.Student)
             .AsNoTracking()
-            .OrderBy(i => i.FirstMidName)
+            .OrderBy(i => i.InstructorID)
             .AsQueryable();
             
             if(!String.IsNullOrEmpty(searchString))
