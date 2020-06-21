@@ -73,7 +73,10 @@
                 }
             </td>
             <td>
-                <a asp-action="Index" asp-route-InstructorID="@item.InstructorID" asp-route-searchString = "@ViewBag.SearchString">Select</a> |
+                <a asp-action="Index" 
+                asp-route-InstructorID="@item.InstructorID" 
+                asp-route-searchString = "@ViewBag.SearchString"
+                asp-route-pageIndex = "@ViewBag.PageIndex">Select</a> |
                 <a asp-action="Edit" asp-route-id="@item.InstructorID">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.InstructorID">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.InstructorID">Delete</a>
@@ -140,7 +143,8 @@
                     @item.Department.Name
                 </td>
                 <td>
-                    <a  asp-action="Index" 
+                    <a  asp-action="Index"
+                        asp-route-pageIndex = "@ViewBag.PageIndex" 
                         asp-route-CourseID = "@item.CourseID"
                         asp-route-InstructorID="@ViewData["InstructorID"]" 
                         asp-route-searchString = "@ViewBag.SearchString">
