@@ -34,7 +34,7 @@ namespace efStart3.Controllers
                 return NotFound();
             }
 
-            var course = await _context.Courses
+            Course course = await _context.Courses
                 .Include(c => c.Department)
                 .AsNoTracking()
                 .FirstOrDefaultAsync(m => m.CourseID == id);
@@ -46,35 +46,11 @@ namespace efStart3.Controllers
             return View(course);
         }
 
-        // // GET: Courses/Create
-        // public IActionResult Create()
-        // {
-        //     ViewData["DepartmentID"] = new SelectList(_context.Departments, "DepartmentID", "Name");
-        //     return View();
-        // }
-
         public IActionResult Create()
         {
             PopulateDepartmentsDropDownList();
             return View();
         }
-
-        // // POST: Courses/Create
-        // // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        // [HttpPost]
-        // [ValidateAntiForgeryToken]
-        // public async Task<IActionResult> Create([Bind("CourseID,Title,Credits,DepartmentID")] Course course)
-        // {
-        //     if (ModelState.IsValid)
-        //     {
-        //         _context.Add(course);
-        //         await _context.SaveChangesAsync();
-        //         return RedirectToAction(nameof(Index));
-        //     }
-        //     ViewData["DepartmentID"] = new SelectList(_context.Departments, "DepartmentID", "DepartmentID", course.DepartmentID);
-        //     return View(course);
-        // }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -99,24 +75,6 @@ namespace efStart3.Controllers
             return View(course);
         }
 
-
-        // // GET: Courses/Edit/5
-        // public async Task<IActionResult> Edit(int? id)
-        // {
-        //     if (id == null)
-        //     {
-        //         return NotFound();
-        //     }
-
-        //     var course = await _context.Courses.FindAsync(id);
-        //     if (course == null)
-        //     {
-        //         return NotFound();
-        //     }
-        //     ViewData["DepartmentID"] = new SelectList(_context.Departments, "DepartmentID", "DepartmentID", course.DepartmentID);
-        //     return View(course);
-        // }
-
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -135,42 +93,7 @@ namespace efStart3.Controllers
             return View(course);
         }
 
-        // // POST: Courses/Edit/5
-        // // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        // [HttpPost]
-        // [ValidateAntiForgeryToken]
-        // public async Task<IActionResult> Edit(int id, [Bind("CourseID,Title,Credits,DepartmentID")] Course course)
-        // {
-        //     if (id != course.CourseID)
-        //     {
-        //         return NotFound();
-        //     }
-
-        //     if (ModelState.IsValid)
-        //     {
-        //         try
-        //         {
-        //             _context.Update(course);
-        //             await _context.SaveChangesAsync();
-        //         }
-        //         catch (DbUpdateConcurrencyException)
-        //         {
-        //             if (!CourseExists(course.CourseID))
-        //             {
-        //                 return NotFound();
-        //             }
-        //             else
-        //             {
-        //                 throw;
-        //             }
-        //         }
-        //         return RedirectToAction(nameof(Index));
-        //     }
-        //     ViewData["DepartmentID"] = new SelectList(_context.Departments, "DepartmentID", "DepartmentID", course.DepartmentID);
-        //     return View(course);
-        // }
-
+        
         [HttpPost, ActionName("Edit")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> EditPost(int? id)
@@ -223,7 +146,7 @@ namespace efStart3.Controllers
                 return NotFound();
             }
 
-            var course = await _context.Courses
+            Course course = await _context.Courses
                 .Include(c => c.Department)
                 .AsNoTracking()
                 .FirstOrDefaultAsync(m => m.CourseID == id);

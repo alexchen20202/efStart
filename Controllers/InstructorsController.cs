@@ -145,7 +145,8 @@ namespace efStart3.Controllers
             Instructor instructor = await _context.Instructors
             .Include(i => i.OfficeAssignment)
             .Include(i => i.CourseAssignments)
-            .ThenInclude(i => i.Course).AsNoTracking()
+            .ThenInclude(i => i.Course)
+            .AsNoTracking()
             .FirstOrDefaultAsync(i => i.InstructorID == id);
 
             if (instructor == null)
@@ -159,41 +160,6 @@ namespace efStart3.Controllers
             return View(instructor);
         }
         
-        // // // POST: Instructors/Edit/5
-        // // // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // // // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        // [HttpPost]
-        // [ValidateAntiForgeryToken]
-        // public async Task<IActionResult> Edit(int id, [Bind("InstructorID,LastName,FirstMidName,HireDate")] Instructor instructor)
-        // {
-        //     if (id != instructor.InstructorID)
-        //     {
-        //         return NotFound();
-        //     }
-
-        //     if (ModelState.IsValid)
-        //     {
-        //         try
-        //         {
-        //             _context.Update(instructor);
-        //             await _context.SaveChangesAsync();
-        //         }
-        //         catch (DbUpdateConcurrencyException)
-        //         {
-        //             if (!InstructorExists(instructor.InstructorID))
-        //             {
-        //                 return NotFound();
-        //             }
-        //             else
-        //             {
-        //                 throw;
-        //             }
-        //         }
-        //         return RedirectToAction(nameof(Index));
-        //     }
-        //     return View(instructor);
-        // }
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int? id, string[] selectedCourses)
@@ -201,39 +167,45 @@ namespace efStart3.Controllers
 
             if (id == null){ return NotFound(); }
 
-            var instructorToUpdate = await _context.Instructors
+            Instructor instructorToUpdate = await _context.Instructors
             .Include(i => i.OfficeAssignment)
             .Include(i => i.CourseAssignments)
             .ThenInclude(i => i.Course)
             .FirstOrDefaultAsync(s => s.InstructorID == id);
 
+            // if instructor info is complete, update and go to Index
             if (await TryUpdateModelAsync<Instructor>(
                 instructorToUpdate, "", i => i.FirstMidName, 
                 i => i.LastName, i => i.HireDate, i => i.OfficeAssignment))
             {
+                // Office can be null
                 if (String.IsNullOrWhiteSpace(instructorToUpdate.OfficeAssignment?.Location))
                 {
                     instructorToUpdate.OfficeAssignment = null;
                 }
+
                 UpdateInstructorCourses(selectedCourses, instructorToUpdate);
+                
                 try
                 {
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateException /* ex */)
                 {
-                //Log the error (uncomment ex variable name and write a log.)
-                ModelState.AddModelError("", "Unable to save changes. " +
-                "Try again, and if the problem persists, " +
-                "see your system administrator.");
+                    //Log the error (uncomment ex variable name and write a log.)
+                    ModelState.AddModelError("", "Unable to save changes. " +
+                    "Try again, and if the problem persists, " +
+                    "see your system administrator.");
                 }
                 return RedirectToAction(nameof(Index));
             }
-        
-        UpdateInstructorCourses(selectedCourses, instructorToUpdate);
-        PopulateAssignedCourseData(instructorToUpdate);
-        //ViewBag.SelectedCourses = "";
-        return View(instructorToUpdate);
+            // else return to the same view again
+            else
+            {
+                UpdateInstructorCourses(selectedCourses, instructorToUpdate);
+                PopulateAssignedCourseData(instructorToUpdate);
+            }
+            return View(instructorToUpdate);
     }
 
         
@@ -312,25 +284,19 @@ namespace efStart3.Controllers
             {
                 // if this course have not be assigned by the instructor
                 // add these course to CourseAssignments property of this instructor
-                if (selectedCoursesHS.Contains(course.CourseID.ToString()))
+                if (selectedCoursesHS.Contains(course.CourseID.ToString()) && !instructorCourses.Contains(course.CourseID))
                 {
-                    if (!instructorCourses.Contains(course.CourseID))
-                    {
-                        instructor.CourseAssignments.Add(new CourseAssignment { 
+                    instructor.CourseAssignments.Add(new CourseAssignment { 
                         InstructorID = instructor.InstructorID, 
                         CourseID = course.CourseID });
-                    }
                 }
                 // if instructor has assigned this course but asingned out now 
                 // remove this CourseAssignment data
-                else
+                if ( !selectedCoursesHS.Contains(course.CourseID.ToString()) && instructorCourses.Contains(course.CourseID))
                 {
-                    if (instructorCourses.Contains(course.CourseID))
-                    {
                         CourseAssignment courseToRemove = instructor.CourseAssignments
                             .FirstOrDefault(i => i.CourseID == course.CourseID);
                         _context.Remove(courseToRemove);
-                    }
                 }
             }
 
