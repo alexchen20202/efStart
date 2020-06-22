@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -21,7 +22,7 @@ namespace efStart3.Controllers
         }
 
         // GET: Students
-        public IActionResult Index(string sortString = "", 
+        public async Task<IActionResult> Index(string sortString = "", 
         string searchString = "", int pageIndex = 1)
         {
             ViewBag.SearchString = searchString;
@@ -30,7 +31,7 @@ namespace efStart3.Controllers
             ViewBag.SortLastName = (sortString == "lastName_desc") ? "lastname" : "lastName_desc";
             ViewBag.SortEnrollDate = (sortString == "enrollDate_desc") ? "enrollDate" : "enrollDate_desc";
             
-            IQueryable<Student> students =  _context.Students.AsQueryable();
+            IQueryable<Student> students = _context.Students;
 
             if(!String.IsNullOrEmpty(searchString))
             {
@@ -67,11 +68,8 @@ namespace efStart3.Controllers
             }
             
             int pageSize = 10;
-            // PagedList<Student> pageList = new PagedList<Student>();
-            // pageList.PagingAsync(students, page, pageSize);
-            // return View(pageList);
             PagedList<Student> list = _pagedList.PagedList();
-            list.PagingAsync(students, pageIndex, pageSize);
+            list = list.Paging(await students.ToListAsync(), pageIndex, pageSize);
             return View(list);
             
         }

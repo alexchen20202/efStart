@@ -24,14 +24,14 @@ namespace efStart3.Controllers
         }
 
         // GET: Instructors
-        public IActionResult Index(
+        public async Task<IActionResult> Index(
             int? InstructorID, int? CourseID, int pageIndex = 1, string searchString = "")
         {
             ViewBag.PageIndex = pageIndex;
             ViewBag.SearchString = searchString;
             var viewModel = new InstructorIndexData();
 
-            IQueryable<Instructor> instructors = _context.Instructors
+             IQueryable<Instructor> instructors = _context.Instructors
             .Include(i => i.OfficeAssignment)
             .Include(i => i.CourseAssignments)
             .ThenInclude(i => i.Course)
@@ -71,9 +71,8 @@ namespace efStart3.Controllers
             }
             
             int pageSize = 10;
-            PagedList<Instructor> list = _pagedList.PagedList();            
-            list.PagingAsync(instructors, pageIndex, pageSize);
-            viewModel.PagedList = list;
+            PagedList<Instructor> list = _pagedList.PagedList();
+            viewModel.PagedList = list.Paging(await instructors.ToListAsync(), pageIndex, pageSize);;
 
             return View(viewModel);
         }
