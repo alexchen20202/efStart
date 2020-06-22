@@ -13,7 +13,10 @@ namespace efStart3.Controllers
     public class EnrollmentsController : Controller
     {
         private readonly SchoolContext _context;
-
+        List<Grade> grades = new List<Grade>()
+        {
+                Grade.A,Grade.B,Grade.C,Grade.D,Grade.E,Grade.F
+        };
         public EnrollmentsController(SchoolContext context)
         {
             _context = context;
@@ -50,12 +53,8 @@ namespace efStart3.Controllers
         public IActionResult Create()
         {
             ViewData["CourseID"] = new SelectList(_context.Courses, "CourseID", "CourseID");
-            ViewData["StudentID"] = new SelectList(_context.Students, "StudentId", "FullName");
-            // List<Grade> grades = new List<Grade>()
-            // {
-            //     Grade.A, Grade.B, Grade.C, Grade.D, Grade.E, Grade.F
-            // };
-            // ViewBag.Grades = new SelectList(grades, "Grade", "Grade");
+            ViewData["StudentID"] = new SelectList(_context.Students, "StudentId", "FullName");            
+            ViewData["Grade"] = new SelectList(grades, "Grade");
             return View();
         }
 
@@ -74,6 +73,7 @@ namespace efStart3.Controllers
             }
             ViewData["CourseID"] = new SelectList(_context.Courses, "CourseID", "CourseID", enrollment.CourseID);
             ViewData["StudentID"] = new SelectList(_context.Students, "StudentId", "FullName", enrollment.StudentID);
+            ViewData["Grade"] = new SelectList(grades, "Grade", enrollment.Grade.Value.ToString());
             return View(enrollment);
         }
 
@@ -92,6 +92,7 @@ namespace efStart3.Controllers
             }
             ViewData["CourseID"] = new SelectList(_context.Courses, "CourseID", "CourseID", enrollment.CourseID);
             ViewData["StudentID"] = new SelectList(_context.Students, "StudentId", "FullName", enrollment.StudentID);
+            ViewData["Grade"] = new SelectList(grades, enrollment.Grade.Value.ToString());
             return View(enrollment);
         }
 
@@ -129,6 +130,7 @@ namespace efStart3.Controllers
             }
             ViewData["CourseID"] = new SelectList(_context.Courses, "CourseID", "CourseID", enrollment.CourseID);
             ViewData["StudentID"] = new SelectList(_context.Students, "StudentId", "FullName", enrollment.StudentID);
+            ViewData["Grade"] = new SelectList(grades, enrollment.Grade.Value.ToString());
             return View(enrollment);
         }
 
