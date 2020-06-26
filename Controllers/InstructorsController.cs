@@ -46,7 +46,6 @@ namespace efStart3.Controllers
             
             if(!String.IsNullOrEmpty(searchString))
             {
-                pageIndex = 1;
                 instructors = instructors.Where(
                     i => i.FirstMidName.Contains(searchString) 
                     || i.LastName.Contains(searchString)

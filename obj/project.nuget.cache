@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "R2dA2sOGVDhTc0PK7ChhSJ1kdmS7nudp5p4izPQCTTc33FVBjOyGWWna02f9fkOg+hVtOiGJfwRc6HTtdBlTMg==",
+  "dgSpecHash": "Od/ZFqLwsKOQ2x9pDCiwAcsYhKyw7ydcVEM3UwEtQ/UUzUs5m8e8jLA8THLmoOxO33OowGRvTeZRMnDWC9xosg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\user\\documents\\dotnetcore\\efStart\\efStart3.csproj",
+  "projectFilePath": "C:\\Users\\user\\documents\\dotNetCore\\efStart\\efStart3.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\user\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\microsoft.aspnetcore.razor\\2.2.0\\microsoft.aspnetcore.razor.2.2.0.nupkg.sha512",

@@ -35,7 +35,7 @@ namespace efStart3
             });
             services.AddSingleton<IStudentPagedService, StudentPagedService>();
             services.AddSingleton<IInstructorPagedService, InstructorPagedService>();
-            
+        
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
