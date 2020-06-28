@@ -29,13 +29,13 @@
     <thead>
         <tr>
             <th>
-                <a asp-action="Index" asp-route-sortString="@ViewBag.SortFirstName">
-                    @Html.DisplayNameFor(model => model.PagedList.Data.FirstOrDefault().FirstName)  
+                <a asp-action="Index" asp-route-sortString="@ViewBag.SortLastName">
+                    @Html.DisplayNameFor(model => model.PagedList.Data.FirstOrDefault().FullName)  
                 </a>
             </th>
             <th>
-                <a asp-action="Index" asp-route-sortString="@ViewBag.SortLastName">
-                    @Html.DisplayNameFor(model => model.PagedList.Data.FirstOrDefault().LastName)                    
+                <a asp-action="Index" asp-route-sortString="@ViewBag.SortID">
+                    @Html.DisplayNameFor(model => model.PagedList.Data.FirstOrDefault().StudentId)                    
                 </a>
             </th>
             <th>
@@ -57,10 +57,10 @@
         }
         <tr class="@selectedRow">
             <td>
-                @item.FirstName
+                @item.FullName
             </td>
             <td>
-                @item.LastName
+                @item.StudentId
             </td>
             <td>
                 @item.EnrollmentDate

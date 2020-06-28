@@ -7,6 +7,7 @@ namespace efStart3.Models
 {
     public partial class Student
     {
+        [Display(Name="Student ID")]
         public int StudentId{get;set;}
         
         [Required]
@@ -23,6 +24,9 @@ namespace efStart3.Models
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [Display(Name="Enrollment Date")]
         public DateTime EnrollmentDate{get;set;}
+        
+        [StringLength(100)]
+        [Display(Name="Full Name")]
         public string FullName
         {
             get

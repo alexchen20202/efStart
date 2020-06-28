@@ -31,8 +31,8 @@ namespace efStart3.Controllers
         {
             ViewBag.SearchString = searchString;
             ViewBag.SortString = sortString;
-            ViewBag.SortFirstName = (sortString == "firstName_desc") ? "firstName" : "firstName_desc";        
-            ViewBag.SortLastName = (sortString == "lastName_desc") ? "lastname" : "lastName_desc";
+            ViewBag.SortLastName = (sortString == "lastName_desc") ? "lastName" : "lastName_desc";        
+            ViewBag.SortID = (sortString == "id_desc") ? "id" : "id_desc";
             ViewBag.SortEnrollDate = (sortString == "enrollDate_desc") ? "enrollDate" : "enrollDate_desc";
             var viewModel = new StudentIndexData();
 
@@ -45,7 +45,6 @@ namespace efStart3.Controllers
             .ThenInclude(s => s.CourseAssignments)
             .ThenInclude(s => s.Instructor)
             .AsNoTracking()
-            .OrderBy(s => s.StudentId)
             .AsQueryable();
 
             if(!String.IsNullOrEmpty(searchString))
@@ -75,17 +74,17 @@ namespace efStart3.Controllers
 
             switch(sortString)
             {
-                case "firstName_desc":
-                students = students.OrderByDescending(s => s.FirstName);
-                break;
-                case "firstName":
-                students = students.OrderBy(s => s.FirstName);
-                break;
                 case "lastName_desc":
                 students = students.OrderByDescending(s => s.LastName);
                 break;
                 case "lastName":
                 students = students.OrderBy(s => s.LastName);
+                break;
+                case "id_desc":
+                students = students.OrderByDescending(s => s.StudentId);
+                break;
+                case "id":
+                students = students.OrderBy(s => s.StudentId);
                 break;
                 case "enrollDate_desc":
                 students = students.OrderByDescending(s => s.EnrollmentDate);
@@ -94,7 +93,7 @@ namespace efStart3.Controllers
                 students = students.OrderBy(s => s.EnrollmentDate);
                 break;
                 default :
-                students = students.OrderBy(s => s.FirstName);
+                students = students.OrderBy(s => s.StudentId);
                 break;
             }
             
