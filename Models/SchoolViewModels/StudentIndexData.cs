@@ -3,10 +3,10 @@ using efStart3.Services;
 
 namespace efStart3.Models.SchoolViewModels
 {
-    public class InstructorIndexData
+    public class StudentIndexData
     {
         public IEnumerable<Course> Courses{get;set;}
-        public IEnumerable<Enrollment> Enrollments{get;set;}
-        public PagedList<Instructor> PagedList{get;set;}   
+        public IEnumerable<CourseAssignment> CourseAssignments{get;set;}
+        public PagedList<Student> PagedList{get;set;}   
     }
 }

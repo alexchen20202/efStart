@@ -1,11 +1,11 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using efStart3.DAL;
 using efStart3.Models;
+using efStart3.Models.SchoolViewModels;
 using efStart3.Services;
 
 namespace efStart3.Controllers
@@ -22,16 +22,31 @@ namespace efStart3.Controllers
         }
 
         // GET: Students
-        public async Task<IActionResult> Index(string sortString = "", 
-        string searchString = "", int pageIndex = 1)
+        public async Task<IActionResult> Index(
+            int? StudentID, 
+            int? CourseID,
+            string sortString = "", 
+            string searchString = "", 
+            int pageIndex = 1)
         {
             ViewBag.SearchString = searchString;
             ViewBag.SortString = sortString;
             ViewBag.SortFirstName = (sortString == "firstName_desc") ? "firstName" : "firstName_desc";        
             ViewBag.SortLastName = (sortString == "lastName_desc") ? "lastname" : "lastName_desc";
             ViewBag.SortEnrollDate = (sortString == "enrollDate_desc") ? "enrollDate" : "enrollDate_desc";
-            
-            IQueryable<Student> students = _context.Students;
+            var viewModel = new StudentIndexData();
+
+            IQueryable<Student> students = _context.Students
+            .Include(s => s.Enrollments)
+            .ThenInclude(s => s.Course)
+            .ThenInclude(s => s.Department)
+            .Include(s => s.Enrollments)
+            .ThenInclude(s => s.Course)            
+            .ThenInclude(s => s.CourseAssignments)
+            .ThenInclude(s => s.Instructor)
+            .AsNoTracking()
+            .OrderBy(s => s.StudentId)
+            .AsQueryable();
 
             if(!String.IsNullOrEmpty(searchString))
             {
@@ -39,6 +54,23 @@ namespace efStart3.Controllers
                     s => s.FirstName.Contains(searchString)
                     || s.LastName.Contains(searchString)
                 );
+            }
+
+            if(StudentID != null)
+            {
+                ViewData["StudentID"] = StudentID;
+                Student student = students
+                .Where(i => i.StudentId == StudentID).Single();
+                viewModel.Courses = student.Enrollments
+                .Select(c => c.Course);
+            }
+
+            if(CourseID != null)
+            {
+                ViewData["CourseID"] = CourseID;
+                Course course = viewModel.Courses
+                .Where(c => c.CourseID == CourseID).FirstOrDefault();
+                viewModel.CourseAssignments = course.CourseAssignments;
             }
 
             switch(sortString)
@@ -68,9 +100,9 @@ namespace efStart3.Controllers
             
             int pageSize = 10;
             PagedList<Student> list = _pagedList.PagedList();
-            list = list.Paging(await students.ToListAsync(), pageIndex, pageSize);
-            return View(list);
+            viewModel.PagedList = list.Paging(await students.ToListAsync(), pageIndex, pageSize);
             
+            return View(viewModel);
         }
 
         // GET: Students/Details/5

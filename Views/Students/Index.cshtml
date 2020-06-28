@@ -1,14 +1,14 @@
-@model efStart3.Services.PagedList<Student>
-  
+@model efStart3.Models.SchoolViewModels.StudentIndexData    
+
 @{
     ViewData["Title"] = "Index";
 }
 
 @{
-    var nextPage = (Model.HasNextPage) ? (Model.PageIndex + 1) : Model.PageIndex;
-    var prevPage = (Model.HasPrevPage) ? (Model.PageIndex - 1) : Model.PageIndex;
-    var nextDisable = (Model.HasNextPage) ? "" : "disabled";
-    var prevDisable = (Model.HasPrevPage) ? "" : "disabled";
+    var nextPage = (Model.PagedList.HasNextPage) ? (Model.PagedList.PageIndex + 1) : Model.PagedList.PageIndex;
+    var prevPage = (Model.PagedList.HasPrevPage) ? (Model.PagedList.PageIndex - 1) : Model.PagedList.PageIndex;
+    var nextDisable = (Model.PagedList.HasNextPage) ? "" : "disabled";
+    var prevDisable = (Model.PagedList.HasPrevPage) ? "" : "disabled";
 }
 
 <form asp-action="Index" method="get" class="form">
@@ -24,23 +24,23 @@
       </div>     
     </div>     
 </form>
-<p>Page @Model.PageIndex of @Model.TotalPages</p>
+<p>Page @Model.PagedList.PageIndex of @Model.PagedList.TotalPages</p>
 <table class="table table-striped">
     <thead>
         <tr>
             <th>
                 <a asp-action="Index" asp-route-sortString="@ViewBag.SortFirstName">
-                    @Html.DisplayNameFor(model => model.Data.FirstOrDefault().FirstName)  
+                    @Html.DisplayNameFor(model => model.PagedList.Data.FirstOrDefault().FirstName)  
                 </a>
             </th>
             <th>
                 <a asp-action="Index" asp-route-sortString="@ViewBag.SortLastName">
-                    @Html.DisplayNameFor(model => model.Data.FirstOrDefault().LastName)                    
+                    @Html.DisplayNameFor(model => model.PagedList.Data.FirstOrDefault().LastName)                    
                 </a>
             </th>
             <th>
                 <a asp-action="Index" asp-route-sortString="@ViewBag.SortEnrollDate">
-                    @Html.DisplayNameFor(model => model.Data.FirstOrDefault().EnrollmentDate)
+                    @Html.DisplayNameFor(model => model.PagedList.Data.FirstOrDefault().EnrollmentDate)
                 </a>
             </th>
             <th>
@@ -49,21 +49,28 @@
            </tr>
     </thead>
     <tbody>
-@foreach (Student item in Model.Data) {
-        <tr>
+@foreach (Student item in Model.PagedList.Data) {
+        var selectedRow = "";      
+        if (item.StudentId == (int?)ViewData["StudentId"])
+        {
+            selectedRow = "table-success";
+        }
+        <tr class="@selectedRow">
             <td>
-                @* @Html.DisplayFor(modleItem => item.Data.FirstOrDefault().FirstName) *@
                 @item.FirstName
             </td>
             <td>
-                @* @Html.DisplayFor(item => item.Data.FirstOrDefault().LastName) *@
                 @item.LastName
             </td>
             <td>
-                @* @Html.DisplayFor(item => item.Data.FirstOrDefault().EnrollmentDate) *@
                 @item.EnrollmentDate
             </td>
             <td>
+                <a 
+                asp-action="Index" 
+                asp-route-StudentID="@item.StudentId" 
+                asp-route-searchString = "@ViewBag.SearchString"
+                asp-route-pageIndex = "@ViewBag.PageIndex">Select</a> |
                 <a asp-action="Edit" asp-route-id="@item.StudentId">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.StudentId">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.StudentId">Delete</a>
@@ -93,4 +100,82 @@
 </a>
 
 </p>
+
+@if (Model.Courses != null)
+{
+    <h5>
+        Courses Enrollmented by Student : 
+        @Html.DisplayFor(StudentID => 
+            Model.PagedList.Data.Where(
+                i => i.StudentId.ToString() == 
+                ViewData["StudentId"].ToString()
+            ).Single().FullName)
+    </h5>
+    <br>
+    <table class="table table-striped">
+        <tr>            
+            <th>CourseID</th>
+            <th>Title</th>
+            <th>Department</th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.Courses)
+        {
+            var selectedRow = "";
+            if (item.CourseID == (int?)ViewData["CourseID"])
+            {
+                selectedRow = "table-success";
+            }
+            <tr class="@selectedRow">                
+                <td>
+                    @item.CourseID
+                </td>
+                <td>
+                    @item.Title
+                </td>
+                <td>
+                    @item.Department.Name
+                </td>
+                <td>
+                    <a  asp-action="Index"
+                        asp-route-pageIndex = "@ViewBag.PageIndex" 
+                        asp-route-CourseID = "@item.CourseID"
+                        asp-route-StudentID="@ViewData["StudentID"]" 
+                        asp-route-searchString = "@ViewBag.SearchString">
+                        Select
+                    </a>    
+                </td>
+            </tr>
+        }
+
+    </table>
+    <hr><br>
+}
+
+
+@if (Model.CourseAssignments != null)
+{
+    <h5>
+        Instructors Assigned in Course : 
+        @Html.DisplayFor(courseID => 
+        Model.CourseAssignments.FirstOrDefault().CourseID)
+    </h5>
+    <br>
+    <table class="table table-striped">
+        <tr>
+            <th>Name</th>
+        </tr>
+        @foreach (var item in Model.CourseAssignments)
+        {
+            <tr>
+                <td>
+                    @item.Instructor.FullName
+                </td>
+            </tr>
+        }
+    </table>
+    <hr><br>
+}
+
 

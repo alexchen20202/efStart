@@ -52,8 +52,8 @@ namespace efStart3.Controllers
         // GET: Enrollments/Create
         public IActionResult Create()
         {
-            ViewData["CourseID"] = new SelectList(_context.Courses, "CourseID", "CourseID");
-            ViewData["StudentID"] = new SelectList(_context.Students, "StudentId", "FullName");            
+            ViewData["CourseID"] = new SelectList(_context.Courses.OrderBy(c => c.CourseID), "CourseID", "CourseID");
+            ViewData["StudentID"] = new SelectList(_context.Students.OrderBy(s => s.StudentId), "StudentId", "FullName");            
             ViewData["Grade"] = new SelectList(grades, "Grade");
             return View();
         }

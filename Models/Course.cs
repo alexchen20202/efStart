@@ -15,7 +15,6 @@ namespace efStart3.Models
         public int Credits{get;set;}
         public int DepartmentID{get;set;}
 
-
         public Department Department{get;set;}
         public ICollection<CourseAssignment> CourseAssignments{get;set;}
         public virtual ICollection<Enrollment> Enrollments{get;set;}

@@ -1,5 +1,4 @@
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace efStart3.Models
 {
@@ -14,7 +13,6 @@ namespace efStart3.Models
         public int StudentID{get;set;}
         [Display(Name="Grade")]
         public Grade? Grade{get;set;}
-
 
         public virtual Course Course{get;set;}
         public virtual Student Student{get;set;}
