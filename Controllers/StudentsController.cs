@@ -34,6 +34,7 @@ namespace efStart3.Controllers
             ViewBag.SortLastName = (sortString == "lastName_desc") ? "lastName" : "lastName_desc";        
             ViewBag.SortID = (sortString == "id_desc") ? "id" : "id_desc";
             ViewBag.SortEnrollDate = (sortString == "enrollDate_desc") ? "enrollDate" : "enrollDate_desc";
+            ViewBag.PageIndex = pageIndex;
             var viewModel = new StudentIndexData();
 
             IQueryable<Student> students = _context.Students

@@ -67,8 +67,9 @@
             </td>
             <td>
                 <a 
-                asp-action="Index" 
-                asp-route-StudentID="@item.StudentId" 
+                asp-action="Index"
+                asp-route-StudentId="@item.StudentId"
+                asp-route-sortString = "@ViewBag.SortString"
                 asp-route-searchString = "@ViewBag.SearchString"
                 asp-route-pageIndex = "@ViewBag.PageIndex">Select</a> |
                 <a asp-action="Edit" asp-route-id="@item.StudentId">Edit</a> |
