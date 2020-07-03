@@ -281,15 +281,15 @@ namespace efStart3.Controllers
 
             foreach (Course course in _context.Courses)
             {
-                // if this course have not be assigned by the instructor
-                // add these course to CourseAssignments property of this instructor
+                // if this course has not be assigned by the instructor
+                // add this course to CourseAssignments data
                 if (selectedCoursesHS.Contains(course.CourseID.ToString()) && !instructorCourses.Contains(course.CourseID))
                 {
                     instructor.CourseAssignments.Add(new CourseAssignment { 
                         InstructorID = instructor.InstructorID, 
                         CourseID = course.CourseID });
                 }
-                // if instructor has assigned this course but asingned out now 
+                // if instructor has assigned this course but cancel now 
                 // remove this CourseAssignment data
                 if ( !selectedCoursesHS.Contains(course.CourseID.ToString()) && instructorCourses.Contains(course.CourseID))
                 {

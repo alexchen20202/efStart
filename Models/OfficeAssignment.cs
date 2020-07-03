@@ -7,6 +7,7 @@ namespace efStart3.Models
     public class OfficeAssignment
     {
         [Key]
+        [Display(Name = "Instructor Name")]
         public int InstructorID { get; set; }
         [StringLength(50)]
         [Display(Name = "Office Location")]
