@@ -8,6 +8,7 @@ using efStart3.DAL;
 using efStart3.Models;
 using efStart3.Models.SchoolViewModels;
 using efStart3.Services;
+using efStart3.Models.Params;
 
 namespace efStart3.Controllers
 {
@@ -27,10 +28,12 @@ namespace efStart3.Controllers
         public async Task<IActionResult> Index(
             int? InstructorID, int? CourseID, int pageIndex = 1, string searchString = "")
         {
-            ViewBag.PageIndex = pageIndex;
-            ViewBag.SearchString = searchString;
-            var viewModel = new InstructorIndexData();
-
+            InstructorIndexData viewModel = new InstructorIndexData();
+            InstructorParam param = new InstructorParam();
+            param.PageIndex = pageIndex;
+            param.SearchString = searchString;
+            viewModel.Param = param;
+            
              IQueryable<Instructor> instructors = _context.Instructors
             .Include(i => i.OfficeAssignment)
             .Include(i => i.CourseAssignments)
@@ -54,7 +57,8 @@ namespace efStart3.Controllers
 
             if(InstructorID != null)
             {
-                ViewData["InstructorID"] = InstructorID;
+
+                viewModel.Param.InstructID = InstructorID;
                 Instructor instructor = instructors
                 .Where(i => i.InstructorID == InstructorID).Single();
                 viewModel.Courses = instructor.CourseAssignments
@@ -63,7 +67,7 @@ namespace efStart3.Controllers
 
             if(CourseID != null)
             {
-                ViewData["CourseID"] = CourseID;
+                viewModel.Param.CourseID = CourseID;
                 Course course = viewModel.Courses
                 .Where(c => c.CourseID == CourseID).Single();
                 viewModel.Enrollments = course.Enrollments;
@@ -140,7 +144,6 @@ namespace efStart3.Controllers
                 return NotFound();
             }
 
-            //var instructor = await _context.Instructors.FindAsync(id);
             Instructor instructor = await _context.Instructors
             .Include(i => i.OfficeAssignment)
             .Include(i => i.CourseAssignments)
@@ -154,7 +157,6 @@ namespace efStart3.Controllers
             }
 
             PopulateAssignedCourseData(instructor);
-            //string[] selectedCourse = new string[]{};
             ViewBag.SelectedCourses = new string[]{};
             return View(instructor);
         }
