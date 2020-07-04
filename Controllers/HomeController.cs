@@ -35,16 +35,6 @@ namespace efStart3.Controllers
 
         public async Task<IActionResult> About()
         {
-            // List<IGrouping<DateTime, Student>> sGroups = _context.Students.GroupBy(s => s.EnrollmentDate).ToList();
-            // List<EnrollmentDateGroup> eGroups = new List<EnrollmentDateGroup>(){};
-            // foreach(IGrouping<DateTime, Student> sGroup in sGroups)
-            // {
-            //     EnrollmentDateGroup eGroup = new EnrollmentDateGroup();
-            //     eGroup.EnrollmentDate = sGroup.Key;
-            //     eGroup.StudentCount = sGroup.Count();
-            //     eGroups.Add(eGroup);
-            // }
-
             IQueryable<EnrollmentDateGroup> eGroups = 
             from student in _context.Students
                 group student by student.EnrollmentDate into sGroup
