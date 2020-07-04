@@ -186,7 +186,7 @@ namespace efStart3.Controllers
                 return NotFound();
             }
 
-            var student = await _context.Students
+            Student student = await _context.Students
                 .FirstOrDefaultAsync(m => m.StudentId == id);
             if (student == null)
             {
@@ -201,7 +201,7 @@ namespace efStart3.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var student = await _context.Students.FindAsync(id);
+            Student student = await _context.Students.FindAsync(id);
             _context.Students.Remove(student);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));

@@ -218,7 +218,7 @@ namespace efStart3.Controllers
                 return NotFound();
             }
 
-            var instructor = await _context.Instructors
+            Instructor instructor = await _context.Instructors
                 .FirstOrDefaultAsync(m => m.InstructorID == id);
             if (instructor == null)
             {
