@@ -7,6 +7,7 @@ using efStart3.DAL;
 using efStart3.Models;
 using efStart3.Models.SchoolViewModels;
 using efStart3.Services;
+using efStart3.Models.Params;
 
 namespace efStart3.Controllers
 {
@@ -29,13 +30,15 @@ namespace efStart3.Controllers
             string searchString = "", 
             int pageIndex = 1)
         {
-            ViewBag.SearchString = searchString;
-            ViewBag.SortString = sortString;
-            ViewBag.SortLastName = (sortString == "lastName_desc") ? "lastName" : "lastName_desc";        
-            ViewBag.SortID = (sortString == "id_desc") ? "id" : "id_desc";
-            ViewBag.SortEnrollDate = (sortString == "enrollDate_desc") ? "enrollDate" : "enrollDate_desc";
-            ViewBag.PageIndex = pageIndex;
-            var viewModel = new StudentIndexData();
+            StudentIndexData viewModel = new StudentIndexData();
+            StudentParam param = new StudentParam();
+            param.SearchString = searchString;
+            param.SortString = sortString;
+            param.SortLastName = (sortString == "lastName_desc") ? "lastName" : "lastName_desc";
+            param.SortID = (sortString == "id_desc") ? "id" : "id_desc";
+            param.SortEnrollmentDate = (sortString == "enrollDate_desc") ? "enrollDate" : "enrollDate_desc";
+            param.PageIndex = pageIndex;
+            viewModel.Param = param;
 
             IQueryable<Student> students = _context.Students
             .Include(s => s.Enrollments)
@@ -58,7 +61,8 @@ namespace efStart3.Controllers
 
             if(StudentID != null)
             {
-                ViewData["StudentID"] = StudentID;
+                viewModel.Param.StudentID = StudentID;
+                //ViewData["StudentID"] = StudentID;
                 Student student = students
                 .Where(i => i.StudentId == StudentID).Single();
                 viewModel.Courses = student.Enrollments
@@ -67,47 +71,25 @@ namespace efStart3.Controllers
 
             if(CourseID != null)
             {
-                ViewData["CourseID"] = CourseID;
+                viewModel.Param.CourseID = CourseID;                
                 Course course = viewModel.Courses
                 .Where(c => c.CourseID == CourseID).FirstOrDefault();
                 viewModel.CourseAssignments = course.CourseAssignments;
             }
 
-            switch(sortString)
-            {
-                case "lastName_desc":
-                students = students.OrderByDescending(s => s.LastName);
-                break;
-                case "lastName":
-                students = students.OrderBy(s => s.LastName);
-                break;
-                case "id_desc":
-                students = students.OrderByDescending(s => s.StudentId);
-                break;
-                case "id":
-                students = students.OrderBy(s => s.StudentId);
-                break;
-                case "enrollDate_desc":
-                students = students.OrderByDescending(s => s.EnrollmentDate);
-                break;
-                case "enrollDate":
-                students = students.OrderBy(s => s.EnrollmentDate);
-                break;
-                default :
-                students = students.OrderBy(s => s.StudentId);
-                break;
-            }
-            
+            students = SortStudents(students, sortString);
+                        
             int pageSize = 10;
             PagedList<Student> list = _pagedList.PagedList();
-            viewModel.PagedList = list.Paging(await students.ToListAsync(), pageIndex, pageSize);
-            
+            viewModel.PagedList = list.Paging(await students.ToListAsync(), pageIndex, pageSize);            
+
             return View(viewModel);
         }
 
-        // GET: Students/Details/5
+        // GET: Students/Details/5  
         public async Task<IActionResult> Details(int? id)
-        {
+        { 
+
             if (id == null)
             {
                 return NotFound();
@@ -228,6 +210,33 @@ namespace efStart3.Controllers
         private bool StudentExists(int id)
         {
             return _context.Students.Any(e => e.StudentId == id);
+        }
+
+        private IQueryable<Student> SortStudents(IQueryable<Student> students, string sortString)
+        {
+            switch(sortString)
+            {
+                case "lastName_desc":
+                return students = students.OrderByDescending(s => s.LastName);
+                
+                case "lastName":
+                return students = students.OrderBy(s => s.LastName);
+                
+                case "id_desc":
+                return students = students.OrderByDescending(s => s.StudentId);
+                
+                case "id":
+                return students = students.OrderBy(s => s.StudentId);
+                
+                case "enrollDate_desc":
+                return students = students.OrderByDescending(s => s.EnrollmentDate);
+                
+                case "enrollDate":
+                return students = students.OrderBy(s => s.EnrollmentDate);
+                
+                default :
+                return students = students.OrderBy(s => s.StudentId);
+            }
         }
     }
 }

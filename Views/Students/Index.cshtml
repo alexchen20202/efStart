@@ -5,10 +5,10 @@
 }
 
 @{
-    var nextPage = (Model.PagedList.HasNextPage) ? (Model.PagedList.PageIndex + 1) : Model.PagedList.PageIndex;
-    var prevPage = (Model.PagedList.HasPrevPage) ? (Model.PagedList.PageIndex - 1) : Model.PagedList.PageIndex;
-    var nextDisable = (Model.PagedList.HasNextPage) ? "" : "disabled";
-    var prevDisable = (Model.PagedList.HasPrevPage) ? "" : "disabled";
+    int nextPage = (Model.PagedList.HasNextPage) ? (Model.PagedList.PageIndex + 1) : Model.PagedList.PageIndex;
+    int prevPage = (Model.PagedList.HasPrevPage) ? (Model.PagedList.PageIndex - 1) : Model.PagedList.PageIndex;
+    string nextDisable = (Model.PagedList.HasNextPage) ? "" : "disabled";
+    string prevDisable = (Model.PagedList.HasPrevPage) ? "" : "disabled";
 }
 
 <form asp-action="Index" method="get" class="form">
@@ -19,7 +19,7 @@
       <div class="form-group col-md-5">
       </div>
       <div class="form-group col-md-4">         
-        <input type="text" placeholder="Search" value="@ViewBag.SearchString" name="searchString"/>
+        <input type="text" placeholder="Search" value="@Model.Param.SearchString" name="searchString"/>
         <input type="submit" value="Search" class="btn btn-primary btn-sm" />
       </div>     
     </div>     
@@ -29,17 +29,17 @@
     <thead>
         <tr>
             <th>
-                <a asp-action="Index" asp-route-sortString="@ViewBag.SortLastName">
+                <a asp-action="Index" asp-route-sortString="@Model.Param.SortLastName">
                     @Html.DisplayNameFor(model => model.PagedList.Data.FirstOrDefault().FullName)  
                 </a>
             </th>
             <th>
-                <a asp-action="Index" asp-route-sortString="@ViewBag.SortID">
+                <a asp-action="Index" asp-route-sortString="@Model.Param.SortID">
                     @Html.DisplayNameFor(model => model.PagedList.Data.FirstOrDefault().StudentId)                    
                 </a>
             </th>
             <th>
-                <a asp-action="Index" asp-route-sortString="@ViewBag.SortEnrollDate">
+                <a asp-action="Index" asp-route-sortString="@Model.Param.SortEnrollmentDate">
                     @Html.DisplayNameFor(model => model.PagedList.Data.FirstOrDefault().EnrollmentDate)
                 </a>
             </th>
@@ -50,8 +50,8 @@
     </thead>
     <tbody>
 @foreach (Student item in Model.PagedList.Data) {
-        var selectedRow = "";      
-        if (item.StudentId == (int?)ViewData["StudentId"])
+        string selectedRow = "";      
+        if (item.StudentId == (int?)Model.Param.StudentID)
         {
             selectedRow = "table-success";
         }
@@ -69,9 +69,9 @@
                 <a 
                 asp-action="Index"
                 asp-route-StudentId="@item.StudentId"
-                asp-route-sortString = "@ViewBag.SortString"
-                asp-route-searchString = "@ViewBag.SearchString"
-                asp-route-pageIndex = "@ViewBag.PageIndex">Select</a> |
+                asp-route-sortString = "@Model.Param.SortString"
+                asp-route-searchString = "@Model.Param.SearchString"
+                asp-route-pageIndex = "@Model.Param.PageIndex">Select</a> |
                 <a asp-action="Edit" asp-route-id="@item.StudentId">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.StudentId">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.StudentId">Delete</a>
@@ -83,8 +83,8 @@
 
 <p>
 <a asp-action = "Index" 
-    asp-route-sortString = "@ViewBag.SortString"
-    asp-route-searchString = "@ViewBag.SearchString"
+    asp-route-sortString = "@Model.Param.SortString"
+    asp-route-searchString = "@Model.Param.SearchString"
     asp-route-pageIndex="@prevPage"
     class = "btn btn-success btn-sm @prevDisable"
     >
@@ -92,8 +92,8 @@
 </a>
 
 <a  asp-action = "Index" 
-    asp-route-sortString = "@ViewBag.SortString"
-    asp-route-searchString = "@ViewBag.SearchString"
+    asp-route-sortString = "@Model.Param.SortString"
+    asp-route-searchString = "@Model.Param.SearchString"
     asp-route-pageIndex="@nextPage"
     class = "btn btn-success btn-sm @nextDisable"
     >
@@ -109,7 +109,7 @@
         @Html.DisplayFor(StudentID => 
             Model.PagedList.Data.Where(
                 i => i.StudentId.ToString() == 
-                ViewData["StudentId"].ToString()
+                Model.Param.StudentID.ToString()
             ).Single().FullName)
     </h5>
     <br>
@@ -124,7 +124,7 @@
         @foreach (var item in Model.Courses)
         {
             var selectedRow = "";
-            if (item.CourseID == (int?)ViewData["CourseID"])
+            if (item.CourseID == (int?)Model.Param.CourseID)
             {
                 selectedRow = "table-success";
             }
@@ -140,10 +140,10 @@
                 </td>
                 <td>
                     <a  asp-action="Index"
-                        asp-route-pageIndex = "@ViewBag.PageIndex" 
-                        asp-route-CourseID = "@item.CourseID"
-                        asp-route-StudentID="@ViewData["StudentID"]" 
-                        asp-route-searchString = "@ViewBag.SearchString">
+                        asp-route-pageIndex = "@Model.Param.PageIndex" 
+                        asp-route-CourseID = "@Model.Param.CourseID"
+                        asp-route-StudentID="@Model.Param.StudentID" 
+                        asp-route-searchString = "@Model.Param.SearchString">
                         Select
                     </a>    
                 </td>
